@@ -2,14 +2,8 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
     
-//    let places = [
-//        "DoubleB", "Isaac Cathedral", "Isaac Square",
-//        "Angleterre Cinema Lounge", "Vasileostrovskiy Market",
-//        "New Holland Island", "Prostovino", "Bekitzer", "Mad Espresso Team",
-//        "Smena Cafe", "Krestovskiy Island", "Pulkovo Airport"
-//    ]
     
-    let places = [Place(name: "DoubleB", location: "Saint-Petersburg", type: PlaceType.Cafe, imageName: "DoubleB")]
+    let places = Place.fillPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,4 +36,7 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
+    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+        
+    }
 }
