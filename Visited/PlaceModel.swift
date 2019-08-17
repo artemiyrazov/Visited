@@ -1,6 +1,6 @@
 import Foundation
 
-enum PlaceType: String {
+enum PlaceType: String, CaseIterable {
     case Cafe
     case Bar
     case Restaurant

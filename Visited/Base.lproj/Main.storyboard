@@ -110,15 +110,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="e6d-vw-vut">
-                                                    <rect key="frame" x="20" y="11" width="374" height="228"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="e6d-vw-vut" firstAttribute="top" secondItem="EHg-9F-kU3" secondAttribute="topMargin" id="G2e-TO-piD"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="e6d-vw-vut" secondAttribute="trailing" id="IBd-Zu-I32"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="e6d-vw-vut" secondAttribute="bottom" id="V8b-N9-rQP"/>
-                                                <constraint firstItem="e6d-vw-vut" firstAttribute="leading" secondItem="EHg-9F-kU3" secondAttribute="leadingMargin" id="m87-lr-OKO"/>
+                                                <constraint firstItem="e6d-vw-vut" firstAttribute="leading" secondItem="EHg-9F-kU3" secondAttribute="leading" id="3Rb-GJ-yMx"/>
+                                                <constraint firstAttribute="trailing" secondItem="e6d-vw-vut" secondAttribute="trailing" id="CBc-Od-yqJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="e6d-vw-vut" secondAttribute="bottom" id="Ss8-EZ-esK"/>
+                                                <constraint firstItem="e6d-vw-vut" firstAttribute="top" secondItem="EHg-9F-kU3" secondAttribute="top" id="Zqk-5b-E3H"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -193,37 +193,37 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="150" id="5Wf-mD-0D8">
-                                        <rect key="frame" x="0.0" y="430" width="414" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="180" id="5Wf-mD-0D8">
+                                        <rect key="frame" x="0.0" y="430" width="414" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Wf-mD-0D8" id="4K0-9I-lR0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="149.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="179.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MSy-Nk-2Cg">
-                                                    <rect key="frame" x="16" y="11" width="382" height="128.33333333333334"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9sh-Lb-RCY">
+                                                    <rect key="frame" x="16" y="11" width="382" height="160"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHJ-xB-Y5i">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="25"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEL-hg-csG">
-                                                            <rect key="frame" x="0.0" y="28.333333333333343" width="382" height="100"/>
+                                                            <rect key="frame" x="0.0" y="25" width="382" height="135"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="I0O-ME-gcS"/>
-                                                                <constraint firstAttribute="height" constant="100" id="Idw-Lr-cm2"/>
+                                                                <constraint firstAttribute="height" constant="135" id="8hp-Jm-LwB"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="cFj-xD-yRs"/>
                                                             </constraints>
                                                         </pickerView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="MSy-Nk-2Cg" secondAttribute="bottom" constant="10.5" id="8sW-Dv-Ft9"/>
-                                                <constraint firstItem="MSy-Nk-2Cg" firstAttribute="leading" secondItem="4K0-9I-lR0" secondAttribute="leading" constant="16" id="IrD-wf-2hO"/>
-                                                <constraint firstItem="MSy-Nk-2Cg" firstAttribute="top" secondItem="4K0-9I-lR0" secondAttribute="top" constant="11" id="Oh5-Bs-6n4"/>
-                                                <constraint firstAttribute="trailing" secondItem="MSy-Nk-2Cg" secondAttribute="trailing" constant="16" id="k9f-Q8-Dut"/>
+                                                <constraint firstItem="9sh-Lb-RCY" firstAttribute="leading" secondItem="4K0-9I-lR0" secondAttribute="leading" constant="16" id="902-EH-3gp"/>
+                                                <constraint firstAttribute="bottom" secondItem="9sh-Lb-RCY" secondAttribute="bottom" constant="8.6666666666666572" id="bJG-fE-Teb"/>
+                                                <constraint firstAttribute="trailing" secondItem="9sh-Lb-RCY" secondAttribute="trailing" constant="16" id="h4C-Gs-Bgi"/>
+                                                <constraint firstItem="9sh-Lb-RCY" firstAttribute="top" secondItem="4K0-9I-lR0" secondAttribute="top" constant="11" id="msh-LU-mH4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -243,6 +243,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="e1w-Yl-AGd"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="placeImage" destination="e6d-vw-vut" id="sKc-Tc-jKO"/>
+                        <outlet property="placeTypePicker" destination="aEL-hg-csG" id="r1V-4q-o3S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1k-jD-kf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iVH-4m-Xzy" userLabel="Exit" sceneMemberID="exit"/>
