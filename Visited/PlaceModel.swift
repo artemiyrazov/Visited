@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 enum PlaceType: String, CaseIterable {
     case Cafe
@@ -12,9 +12,10 @@ enum PlaceType: String, CaseIterable {
 
 struct Place {
     var name: String
-    var location: String
+    var location: String?
     var type: PlaceType
-    var imageName: String
+    var imageName: String?
+    var image: UIImage?
     
     static let places = [
         "DoubleB", "Isaac Cathedral", "Isaac Square",
@@ -27,7 +28,7 @@ struct Place {
         var newPlaces = [Place]()
         
         for place in places {
-            newPlaces.append(Place(name: place, location: "Saint-Petersburg", type: .Other, imageName: place))
+            newPlaces.append(Place(name: place, location: "Saint-Petersburg", type: .Other, imageName: place, image: nil))
         }
         
         return newPlaces

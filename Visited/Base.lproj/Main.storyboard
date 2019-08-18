@@ -102,7 +102,7 @@
                         <sections>
                             <tableViewSection id="bKw-yv-oNe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="250" id="IhP-oe-RB2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="250" id="IhP-oe-RB2">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IhP-oe-RB2" id="EHg-9F-kU3">
@@ -133,14 +133,14 @@
                                                     <rect key="frame" x="16" y="15" width="382" height="66.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZc-iM-tDh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="31.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="29.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter the name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LtR-PJ-pdt">
-                                                            <rect key="frame" x="0.0" y="39.333333333333336" width="382" height="27.333333333333336"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                            <rect key="frame" x="0.0" y="37.333333333333336" width="382" height="29.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="ASz-2O-C0x" id="uVJ-CW-KJA"/>
@@ -168,15 +168,15 @@
                                                     <rect key="frame" x="16" y="15" width="382" height="66.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-NZ-zsl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="31.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="29.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-7k-icf">
-                                                            <rect key="frame" x="0.0" y="39.333333333333336" width="382" height="27.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="37.333333333333336" width="382" height="29.333333333333336"/>
                                                             <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="ASz-2O-C0x" id="cYt-3Z-rO3"/>
@@ -238,14 +238,21 @@
                     <navigationItem key="navigationItem" title="New place" id="cFh-n5-75o">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uMX-oJ-fme">
                             <connections>
-                                <segue destination="iVH-4m-Xzy" kind="unwind" unwindAction="cancelAction:" id="nU8-XV-1Ij"/>
+                                <action selector="cancelAction:" destination="ASz-2O-C0x" id="E6F-RJ-DaX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="e1w-Yl-AGd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="e1w-Yl-AGd">
+                            <connections>
+                                <segue destination="iVH-4m-Xzy" kind="unwind" unwindAction="unwindSegue:" id="yq8-rL-xX1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="placeImage" destination="e6d-vw-vut" id="sKc-Tc-jKO"/>
+                        <outlet property="placeLocationField" destination="Cx4-7k-icf" id="HcK-0G-VYX"/>
+                        <outlet property="placeNameField" destination="LtR-PJ-pdt" id="1Y1-zH-PgD"/>
                         <outlet property="placeTypePicker" destination="aEL-hg-csG" id="r1V-4q-o3S"/>
+                        <outlet property="saveButton" destination="e1w-Yl-AGd" id="U1N-S6-TYV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1k-jD-kf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -282,6 +289,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mX6-Xt-pAQ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
