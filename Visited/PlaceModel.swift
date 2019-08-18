@@ -1,4 +1,4 @@
-import UIKit
+import RealmSwift
 
 enum PlaceType: String, CaseIterable {
     case Cafe
@@ -10,30 +10,25 @@ enum PlaceType: String, CaseIterable {
     case Other
 }
 
-struct Place {
-    var name: String
-    var location: String?
-    var type: PlaceType
-    var imageName: String?
-    var image: UIImage?
-    
-    static let places = [
-        "DoubleB", "Isaac Cathedral", "Isaac Square",
-        "Angleterre Cinema Lounge", "Vasileostrovskiy Market",
-        "New Holland Island", "Prostovino", "Bekitzer", "Mad Espresso Team",
-        "Smena Cafe", "Krestovskiy Island", "Pulkovo Airport"
-    ]
 
-    static func fillPlaces() -> [Place] {
-        var newPlaces = [Place]()
-        
-        for place in places {
-            newPlaces.append(Place(name: place, location: "Saint-Petersburg", type: .Other, imageName: place, image: nil))
-        }
-        
-        return newPlaces
+class Place: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String? //CHANGE
+    @objc dynamic var imageData: Data?
+    
+    convenience init (name: String, location: String?, type: String?, imageData: Data?) {
+        self.init()
+        self.name = name
+        self.location = location
+        self.type = type
+        self.imageData = imageData
     }
     
 }
+
+
+
+
 
 

@@ -2,8 +2,9 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
     
-    var selectedPlaceType: PlaceType = .Other
-    var newPlace: Place?
+//    var selectedPlaceType: PlaceType = .Other
+    var selectedPlaceType = PlaceType.Other.rawValue
+
     var isImageChanged = false
     
     
@@ -19,13 +20,12 @@ class NewPlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.tableFooterView = UIView()
         
         saveButton.isEnabled = false
-        
         placeNameField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
+    
         placeTypePicker.delegate = self
         placeTypePicker.dataSource = self
         placeTypePicker.selectRow(PlaceType.allCases.count / 2, inComponent: 0, animated: true)
@@ -80,11 +80,12 @@ class NewPlaceTableViewController: UITableViewController {
             image = #imageLiteral(resourceName: "Default place image")
         }
         
-        newPlace = Place(name: placeNameField.text!,
-                         location: placeLocationField.text,
-                         type: selectedPlaceType,
-                         imageName: nil,
-                         image: image)
+        let newPlace = Place(name: placeNameField.text!,
+                             location: placeLocationField.text!,
+                             type: selectedPlaceType,
+                             imageData: image?.pngData())
+        
+        StorageManager.saveObject(newPlace)
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
@@ -158,7 +159,8 @@ extension NewPlaceTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedPlaceType = PlaceType.allCases[row]
+//        selectedPlaceType = PlaceType.allCases[row]
+          selectedPlaceType = PlaceType.allCases[row].rawValue
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
