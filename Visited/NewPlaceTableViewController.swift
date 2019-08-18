@@ -2,10 +2,9 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
     
-//    var selectedPlaceType: PlaceType = .Other
-    var selectedPlaceType = PlaceType.Other.rawValue
-
+    var selectedPlaceType = PlaceType.Other
     var isImageChanged = false
+    var currentPlace: Place?
     
     
     @IBOutlet weak var placeImage: UIImageView!
@@ -29,6 +28,8 @@ class NewPlaceTableViewController: UITableViewController {
         placeTypePicker.delegate = self
         placeTypePicker.dataSource = self
         placeTypePicker.selectRow(PlaceType.allCases.count / 2, inComponent: 0, animated: true)
+        
+        setupEditScreen()
     }
 
     
@@ -70,7 +71,7 @@ class NewPlaceTableViewController: UITableViewController {
     
     
     
-    func saveNewPlace() {
+    func savePlace() {
         
         var image: UIImage?
         
@@ -85,7 +86,42 @@ class NewPlaceTableViewController: UITableViewController {
                              type: selectedPlaceType,
                              imageData: image?.pngData())
         
-        StorageManager.saveObject(newPlace)
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+             StorageManager.saveObject(newPlace)
+        }
+    }
+    
+    private func setupEditScreen() {
+    
+        guard currentPlace != nil else { return }
+        guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+        
+        setupNavigationBar()
+        isImageChanged = true
+        
+        placeImage.image = image
+        placeImage.contentMode = .scaleAspectFit
+        
+        placeNameField.text = currentPlace?.name
+        placeLocationField.text = currentPlace?.location
+        placeTypePicker.selectRow(PlaceType.index(of: currentPlace!.type), inComponent: 0, animated: true)
+        
+    }
+    
+    private func setupNavigationBar () {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
@@ -137,7 +173,7 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         placeImage.image = info[.editedImage] as? UIImage
-        placeImage.contentMode = .scaleAspectFill
+        placeImage.contentMode = .scaleAspectFit
         placeImage.clipsToBounds = true
         
         isImageChanged = true
@@ -159,8 +195,7 @@ extension NewPlaceTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        selectedPlaceType = PlaceType.allCases[row]
-          selectedPlaceType = PlaceType.allCases[row].rawValue
+        selectedPlaceType = PlaceType.allCases[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

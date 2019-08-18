@@ -70,6 +70,7 @@
                                     <outlet property="placeLocationLabel" destination="DY9-Y5-fmB" id="IEh-9W-kvy"/>
                                     <outlet property="placeNameLabel" destination="ZDU-ic-waC" id="V76-Sj-Kt1"/>
                                     <outlet property="placeTypeLabel" destination="GVG-cf-vXp" id="dzA-at-uOx"/>
+                                    <segue destination="ASz-2O-C0x" kind="show" identifier="showPlaceDetails" id="wHP-uz-zYQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +79,7 @@
                             <outlet property="delegate" destination="b0H-2e-maC" id="zzd-cD-WtR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Visited " id="fdA-nw-kkx">
+                    <navigationItem key="navigationItem" title="Visited " largeTitleDisplayMode="never" id="fdA-nw-kkx">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JgX-QJ-zWt">
                             <connections>
                                 <segue destination="cGJ-Dh-Yjh" kind="presentation" id="lCe-79-hPh"/>
@@ -98,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="bKw-yv-oNe">
                                 <cells>
@@ -109,11 +110,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="e6d-vw-vut">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="e6d-vw-vut">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="e6d-vw-vut" firstAttribute="leading" secondItem="EHg-9F-kU3" secondAttribute="leading" id="3Rb-GJ-yMx"/>
                                                 <constraint firstAttribute="trailing" secondItem="e6d-vw-vut" secondAttribute="trailing" id="CBc-Od-yqJ"/>
@@ -258,7 +258,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1k-jD-kf8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="iVH-4m-Xzy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2805.7971014492755" y="-158.1521739130435"/>
+            <point key="canvasLocation" x="1983" y="-157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wd1-9Y-4zb">
@@ -300,10 +300,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiR-Zj-fqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900.0000000000002" y="-157.33695652173915"/>
+            <point key="canvasLocation" x="1983" y="-875"/>
         </scene>
     </scenes>
     <resources>
-        <image name="photo" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="gallery" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wHP-uz-zYQ"/>
+    </inferredMetricsTieBreakers>
 </document>

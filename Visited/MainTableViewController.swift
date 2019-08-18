@@ -26,8 +26,7 @@ class MainTableViewController: UITableViewController {
 
         cell.placeNameLabel.text = place.name
         cell.placeLocationLabel.text = place.location
-//        cell.placeTypeLabel.text = place.type.rawValue
-        cell.placeTypeLabel.text = place.type
+        cell.placeTypeLabel.text = place.type.rawValue
 
         DispatchQueue.main.async {
             cell.placeImage.image = UIImage(data: place.imageData!)
@@ -58,10 +57,20 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPlaceDetails" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let place = places[indexPath.row]
+            
+            let newPlaceVC = segue.destination as! NewPlaceTableViewController
+            newPlaceVC.currentPlace = place
+        }
+    }
+    
     @IBAction func unwindSegue (_ segue: UIStoryboardSegue) {
 
         guard let newPlaceVC = segue.source as? NewPlaceTableViewController else { return }
-        newPlaceVC.saveNewPlace()
+        newPlaceVC.savePlace()
         tableView.reloadData()
 
     }
