@@ -4,14 +4,14 @@ class NewPlaceTableViewController: UITableViewController {
     
     var selectedPlaceType = PlaceType.Other
     var isImageChanged = false
-    var currentPlace: Place?
+    var currentPlace: Place!
     
     
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeTypePicker: UIPickerView!
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
-    
+    @IBOutlet weak var ratingControl: RatingControlStackView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -90,7 +90,8 @@ class NewPlaceTableViewController: UITableViewController {
         let newPlace = Place(name: placeNameField.text!,
                              location: placeLocationField.text!,
                              type: selectedPlaceType,
-                             imageData: image?.pngData())
+                             imageData: image?.pngData(),
+                             rating: Double(ratingControl.rating))
         
         if currentPlace != nil {
             try! realm.write {
@@ -98,6 +99,7 @@ class NewPlaceTableViewController: UITableViewController {
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -118,6 +120,8 @@ class NewPlaceTableViewController: UITableViewController {
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
         placeTypePicker.selectRow(PlaceType.index(of: currentPlace!.type), inComponent: 0, animated: true)
+        
+        ratingControl.rating = Int(currentPlace.rating)
         
     }
     

@@ -207,6 +207,7 @@
                         <outlet property="placeLocationField" destination="Cx4-7k-icf" id="HcK-0G-VYX"/>
                         <outlet property="placeNameField" destination="LtR-PJ-pdt" id="1Y1-zH-PgD"/>
                         <outlet property="placeTypePicker" destination="aEL-hg-csG" id="r1V-4q-o3S"/>
+                        <outlet property="ratingControl" destination="Ebk-gu-u21" id="Ir8-wn-lX5"/>
                         <outlet property="saveButton" destination="e1w-Yl-AGd" id="U1N-S6-TYV"/>
                     </connections>
                 </tableViewController>
