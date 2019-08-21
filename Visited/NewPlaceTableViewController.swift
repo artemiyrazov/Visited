@@ -20,7 +20,11 @@ class NewPlaceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: tableView.frame.size.width,
+            height: 1))
         
         saveButton.isEnabled = false
         placeNameField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -44,6 +48,8 @@ class NewPlaceTableViewController: UITableViewController {
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
+            actionSheet.view.tintColor = .black
+            
             
             let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(source: .camera)
