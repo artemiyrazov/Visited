@@ -25,7 +25,8 @@ class Place: Object {
     @objc dynamic var name = ""
     @objc dynamic var location: String?
     @objc dynamic var imageData: Data?
-
+    @objc dynamic var date = Date()
+    
     @objc dynamic private var privateType: String = PlaceType.Other.rawValue
     var type: PlaceType {
         

@@ -156,11 +156,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="New place" id="cFh-n5-75o">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uMX-oJ-fme">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancelAction:" destination="ASz-2O-C0x" id="E6F-RJ-DaX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="e1w-Yl-AGd">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="iVH-4m-Xzy" kind="unwind" unwindAction="unwindSegue:" id="yq8-rL-xX1"/>
                             </connections>
@@ -258,6 +260,10 @@
                                     <segment title="Date"/>
                                     <segment title="Name"/>
                                 </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="sortSelection:" destination="2Ji-0D-2ah" eventType="valueChanged" id="Hp9-0s-yu1"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,14 +279,22 @@
                         <viewLayoutGuide key="safeArea" id="zur-FZ-JeE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Visited " largeTitleDisplayMode="never" id="zh6-RW-bgd">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AscendingSorting" id="0WX-f9-4Wb"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AscendingSorting" id="0WX-f9-4Wb">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sortingType:" destination="2Ji-0D-2ah" id="qYD-KF-9rs"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="33m-u6-OiW">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="cGJ-Dh-Yjh" kind="presentation" id="Si0-nC-MYn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="J7z-8a-tqD" id="hK2-Gr-fBh"/>
+                        <outlet property="sortingButton" destination="0WX-f9-4Wb" id="ijL-6e-Ru5"/>
                         <outlet property="tableView" destination="pkV-fL-gLK" id="xd1-lq-qI5"/>
                     </connections>
                 </viewController>

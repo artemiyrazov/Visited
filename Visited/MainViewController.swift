@@ -5,7 +5,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var sortingButton: UIBarButtonItem!
+    
     var places: Results<Place>!
+    var ascendingSorting = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +34,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.placeLocationLabel.text = place.location
         cell.placeTypeLabel.text = place.type.rawValue
 
-        DispatchQueue.main.async {
-            cell.placeImage.image = UIImage(data: place.imageData!)
-            cell.placeImage.layer.cornerRadius = cell.placeImage.frame.size.height / 2
-            cell.placeImage.clipsToBounds = true
-        }
+        
+        cell.placeImage.image = UIImage(data: place.imageData!)
+        cell.placeImage.layer.cornerRadius = cell.placeImage.frame.size.height / 2
+        cell.placeImage.clipsToBounds = true
+        
 
 
         return cell
@@ -74,5 +79,32 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         newPlaceVC.savePlace()
         tableView.reloadData()
 
+    }
+    
+    @IBAction func sortingType(_ sender: UIBarButtonItem) {
+        ascendingSorting.toggle()
+        if ascendingSorting {
+            sortingButton.image = #imageLiteral(resourceName: "AscendingSorting")
+        } else {
+            sortingButton.image = #imageLiteral(resourceName: "DescendingSorting")
+        }
+        
+        sorting()
+    }
+    
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    
+    private func sorting() {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+        } else {
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+        }
+        
+        tableView.reloadData()
+        
     }
 }
