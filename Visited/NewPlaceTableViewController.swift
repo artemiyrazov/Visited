@@ -10,7 +10,11 @@ class NewPlaceTableViewController: UITableViewController {
     
     
     @IBOutlet weak var placeImage: UIImageView!
-    @IBOutlet weak var placeTypePicker: UIPickerView!
+    @IBOutlet weak var placeTypePicker: UIPickerView! {
+        didSet  {
+            selectedPlaceType = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
+        }
+    }
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
     @IBOutlet weak var ratingCosmosView: CosmosView!
@@ -80,14 +84,7 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
-    // MARK: Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showMap" else { return }
-        
-        let mapVC = segue.destination as! MapViewController
-        mapVC.place = currentPlace
-    }
     
     func savePlace() {
         
@@ -103,7 +100,7 @@ class NewPlaceTableViewController: UITableViewController {
                              location: placeLocationField.text!,
                              type: selectedPlaceType,
                              imageData: image?.pngData(),
-                             rating: currentRating)
+                             rating: ratingCosmosView.rating)
         
         if currentPlace != nil {
             try! realm.write {
@@ -127,7 +124,7 @@ class NewPlaceTableViewController: UITableViewController {
         isImageChanged = true
         
         placeImage.image = image
-        placeImage.contentMode = .scaleAspectFill
+        placeImage.contentMode = .scaleAspectFit
         
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
