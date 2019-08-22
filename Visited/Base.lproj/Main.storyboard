@@ -153,17 +153,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="139.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ebk-gu-u21" customClass="RatingControlStackView" customModule="Visited" customModuleProvider="target">
-                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="starSize">
-                                                            <size key="value" width="44" height="44"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDS-Po-zuo">
                                                     <rect key="frame" x="20" y="11" width="374" height="23"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -188,17 +177,10 @@
                                             <constraints>
                                                 <constraint firstItem="cDS-Po-zuo" firstAttribute="top" secondItem="0kh-9J-H7o" secondAttribute="top" constant="11" id="21b-RH-uGi"/>
                                                 <constraint firstItem="xD1-0i-iaZ" firstAttribute="centerX" secondItem="0kh-9J-H7o" secondAttribute="centerX" id="DxL-e3-G7b"/>
-                                                <constraint firstItem="Ebk-gu-u21" firstAttribute="centerX" secondItem="0kh-9J-H7o" secondAttribute="centerX" id="P0y-TR-Zdi"/>
                                                 <constraint firstItem="cDS-Po-zuo" firstAttribute="leading" secondItem="0kh-9J-H7o" secondAttribute="leading" constant="20" id="RYg-xj-GGf"/>
-                                                <constraint firstItem="Ebk-gu-u21" firstAttribute="centerY" secondItem="0kh-9J-H7o" secondAttribute="centerY" id="UjH-Dx-tWu"/>
                                                 <constraint firstAttribute="trailing" secondItem="cDS-Po-zuo" secondAttribute="trailing" constant="20" id="git-kF-6Wt"/>
                                                 <constraint firstItem="xD1-0i-iaZ" firstAttribute="centerY" secondItem="0kh-9J-H7o" secondAttribute="centerY" id="wL8-98-TEE"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="Ebk-gu-u21"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -228,7 +210,6 @@
                         <outlet property="placeLocationField" destination="Cx4-7k-icf" id="HcK-0G-VYX"/>
                         <outlet property="placeNameField" destination="LtR-PJ-pdt" id="1Y1-zH-PgD"/>
                         <outlet property="placeTypePicker" destination="aEL-hg-csG" id="r1V-4q-o3S"/>
-                        <outlet property="ratingControl" destination="Ebk-gu-u21" id="Ir8-wn-lX5"/>
                         <outlet property="ratingCosmosView" destination="xD1-0i-iaZ" id="6v2-1q-pvc"/>
                         <outlet property="saveButton" destination="e1w-Yl-AGd" id="U1N-S6-TYV"/>
                     </connections>

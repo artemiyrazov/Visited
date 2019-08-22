@@ -13,9 +13,7 @@ class NewPlaceTableViewController: UITableViewController {
     @IBOutlet weak var placeTypePicker: UIPickerView!
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
-    @IBOutlet weak var ratingControl: RatingControlStackView!
     @IBOutlet weak var ratingCosmosView: CosmosView!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
