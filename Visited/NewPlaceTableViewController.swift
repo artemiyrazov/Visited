@@ -120,7 +120,7 @@ class NewPlaceTableViewController: UITableViewController {
         isImageChanged = true
         
         placeImage.image = image
-        placeImage.contentMode = .scaleAspectFit
+        placeImage.contentMode = .scaleAspectFill
         
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
