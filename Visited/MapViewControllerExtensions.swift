@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import CoreLocation
 
 extension MapViewController: MKMapViewDelegate {
     
@@ -23,5 +24,12 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return annotationView
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
     }
 }
