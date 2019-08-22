@@ -10,11 +10,7 @@ class NewPlaceTableViewController: UITableViewController {
     
     
     @IBOutlet weak var placeImage: UIImageView!
-    @IBOutlet weak var placeTypePicker: UIPickerView! {
-        didSet  {
-            selectedPlaceType = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
-        }
-    }
+    @IBOutlet weak var placeTypePicker: UIPickerView!
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
     @IBOutlet weak var ratingCosmosView: CosmosView!
@@ -36,7 +32,6 @@ class NewPlaceTableViewController: UITableViewController {
         
         placeTypePicker.delegate = self
         placeTypePicker.dataSource = self
-        placeTypePicker.selectRow(PlaceType.allCases.count / 2, inComponent: 0, animated: true)
         
         setupEditScreen()
         
@@ -103,6 +98,8 @@ class NewPlaceTableViewController: UITableViewController {
             image = #imageLiteral(resourceName: "Default place image")
         }
         
+        selectedPlaceType = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
+        
         let newPlace = Place(name: placeNameField.text!,
                              location: placeLocationField.text!,
                              type: selectedPlaceType,
@@ -131,7 +128,7 @@ class NewPlaceTableViewController: UITableViewController {
         isImageChanged = true
         
         placeImage.image = image
-        placeImage.contentMode = .scaleAspectFit
+        placeImage.contentMode = .scaleAspectFill
         
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
