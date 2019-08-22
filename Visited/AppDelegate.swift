@@ -10,6 +10,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Inside your application(application:didFinishLaunchingWithOptions:)
         
+        
+        // version 0 - basic version
+        // version 1 - add 'date' into model
+        // version 2 - add 'rating' into model
+        
         let schemaVersion: UInt64 = 2
         
         let config = Realm.Configuration(

@@ -29,6 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search by name, location or type"
+        searchController.searchBar.tintColor = .black
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -121,7 +122,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func sorting() {
         
         if segmentedControl.selectedSegmentIndex == 0 {
-            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+            places = places.sorted(byKeyPath: "rating", ascending: ascendingSorting)
         } else {
             places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
         }
