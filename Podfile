@@ -7,5 +7,6 @@ target 'Visited' do
 
   # Pods for Visited
   pod 'RealmSwift'
+  pod 'Cosmos', '~> 19.0'
  
 end
