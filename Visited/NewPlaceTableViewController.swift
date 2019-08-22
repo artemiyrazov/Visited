@@ -10,7 +10,11 @@ class NewPlaceTableViewController: UITableViewController {
     
     
     @IBOutlet weak var placeImage: UIImageView!
-    @IBOutlet weak var placeTypePicker: UIPickerView!
+    @IBOutlet weak var placeTypePicker: UIPickerView! {
+        didSet  {
+            selectedPlaceType = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
+        }
+    }
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
     @IBOutlet weak var ratingCosmosView: CosmosView!
@@ -96,7 +100,7 @@ class NewPlaceTableViewController: UITableViewController {
                              location: placeLocationField.text!,
                              type: selectedPlaceType,
                              imageData: image?.pngData(),
-                             rating: currentRating)
+                             rating: ratingCosmosView.rating)
         
         if currentPlace != nil {
             try! realm.write {
