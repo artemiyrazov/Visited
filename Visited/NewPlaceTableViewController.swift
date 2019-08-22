@@ -45,7 +45,6 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
-    
     // MARK: Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,6 +83,14 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showMap" else { return }
+        
+        let mapVC = segue.destination as! MapViewController
+        mapVC.place = currentPlace
+    }
     
     
     func savePlace() {
