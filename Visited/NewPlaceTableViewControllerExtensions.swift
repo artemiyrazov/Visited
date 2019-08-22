@@ -43,7 +43,7 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         placeImage.image = info[.editedImage] as? UIImage
-        placeImage.contentMode = .scaleAspectFit
+        placeImage.contentMode = .scaleAspectFill
         placeImage.clipsToBounds = true
         
         isImageChanged = true

@@ -86,7 +86,7 @@ class NewPlaceTableViewController: UITableViewController {
         let mapVC = segue.destination as! MapViewController
         mapVC.place.name = placeNameField.text!
         mapVC.place.location = placeLocationField.text!
-        mapVC.place.type = selectedPlaceType
+        mapVC.place.type = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
         mapVC.place.imageData = placeImage.image?.pngData()
         
     }
