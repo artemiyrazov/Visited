@@ -40,8 +40,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if isFiltering {
             return filteredPlaces.count
         }
-        
-        return places.isEmpty ? 0 : places.count
+        return places.count
     }
     
     
@@ -50,23 +49,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
-        var place = Place()
-        
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
         
         cell.placeNameLabel.text = place.name
         cell.placeLocationLabel.text = place.location
         cell.placeTypeLabel.text = place.type.rawValue
-        
-        
         cell.placeImage.image = UIImage(data: place.imageData!)
-        cell.placeImage.layer.cornerRadius = cell.placeImage.frame.size.height / 2
-        cell.placeImage.clipsToBounds = true
-        
+        cell.placeRatingView.rating = place.rating
         
         
         return cell
@@ -99,13 +88,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "showPlaceDetails" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let place: Place
-            if isFiltering {
-                place = filteredPlaces[indexPath.row]
-            } else {
-                place = places[indexPath.row]
-            }
-            
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
             
             let newPlaceVC = segue.destination as! NewPlaceTableViewController
             newPlaceVC.currentPlace = place
