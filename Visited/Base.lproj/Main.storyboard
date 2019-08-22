@@ -245,10 +245,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-36-hha">
-                                <rect key="frame" x="344" y="60" width="30" height="30"/>
+                                <rect key="frame" x="359" y="30" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="vyx-sF-HlL"/>
-                                    <constraint firstAttribute="height" constant="30" id="xDy-rA-1bg"/>
+                                    <constraint firstAttribute="width" constant="40" id="vyx-sF-HlL"/>
+                                    <constraint firstAttribute="height" constant="40" id="xDy-rA-1bg"/>
                                 </constraints>
                                 <state key="normal" image="cancel"/>
                                 <connections>
@@ -258,12 +258,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="1bZ-36-hha" secondAttribute="trailing" constant="40" id="1Qv-Od-sJP"/>
+                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="1bZ-36-hha" secondAttribute="trailing" constant="15" id="1Qv-Od-sJP"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="trailing" secondItem="7p8-qp-WIh" secondAttribute="trailing" id="Flm-C1-yWj"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="top" secondItem="7p8-qp-WIh" secondAttribute="top" id="GsU-6D-r44"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="leading" secondItem="7p8-qp-WIh" secondAttribute="leading" id="LMD-tm-UY3"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="bottom" secondItem="7p8-qp-WIh" secondAttribute="bottom" id="Ntf-SC-aME"/>
-                            <constraint firstItem="1bZ-36-hha" firstAttribute="top" secondItem="2Qu-hb-8RS" secondAttribute="top" constant="40" id="YSe-aV-8d9"/>
+                            <constraint firstItem="1bZ-36-hha" firstAttribute="top" secondItem="2Qu-hb-8RS" secondAttribute="top" constant="10" id="YSe-aV-8d9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Qu-hb-8RS"/>
                     </view>
