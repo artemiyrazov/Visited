@@ -5,10 +5,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     var place: Place!
+    let annotationIdentifier = "annotationIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mapView.delegate = self
         setupPlacemark()
     }
     
