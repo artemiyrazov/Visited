@@ -1,18 +1,19 @@
 import UIKit
+import Cosmos
 
 class NewPlaceTableViewController: UITableViewController {
     
     var selectedPlaceType = PlaceType.Other
     var isImageChanged = false
-    var currentPlace: Place?
+    var currentPlace: Place!
+    var currentRating = 0.0
     
     
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeTypePicker: UIPickerView!
     @IBOutlet weak var placeLocationField: UITextField!
     @IBOutlet weak var placeNameField: UITextField!
-    
-    
+    @IBOutlet weak var ratingCosmosView: CosmosView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
@@ -20,7 +21,11 @@ class NewPlaceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: tableView.frame.size.width,
+            height: 1))
         
         saveButton.isEnabled = false
         placeNameField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -30,6 +35,10 @@ class NewPlaceTableViewController: UITableViewController {
         placeTypePicker.selectRow(PlaceType.allCases.count / 2, inComponent: 0, animated: true)
         
         setupEditScreen()
+        
+        ratingCosmosView.didTouchCosmos = { rating in
+            self.currentRating = rating
+        }
     }
     
     
@@ -44,6 +53,8 @@ class NewPlaceTableViewController: UITableViewController {
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
+            actionSheet.view.tintColor = .black
+            
             
             let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(source: .camera)
@@ -84,7 +95,8 @@ class NewPlaceTableViewController: UITableViewController {
         let newPlace = Place(name: placeNameField.text!,
                              location: placeLocationField.text!,
                              type: selectedPlaceType,
-                             imageData: image?.pngData())
+                             imageData: image?.pngData(),
+                             rating: currentRating)
         
         if currentPlace != nil {
             try! realm.write {
@@ -92,6 +104,7 @@ class NewPlaceTableViewController: UITableViewController {
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -112,6 +125,8 @@ class NewPlaceTableViewController: UITableViewController {
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
         placeTypePicker.selectRow(PlaceType.index(of: currentPlace!.type), inComponent: 0, animated: true)
+        
+        ratingCosmosView.rating = currentPlace.rating
         
     }
     
