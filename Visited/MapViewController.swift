@@ -6,15 +6,19 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
-    let regionInMeters = 10_000.00
+    let regionInMeters = 5000.0
+    var currentSegueIdentifier = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
         
         buttonsStackView.addBackground(color: UIColor(red: 1, green: 1, blue: 1, alpha: 0.8),
@@ -23,21 +27,17 @@ class MapViewController: UIViewController {
     
     @IBAction func centerViewInUserLocation() {
         
-        if let location = locationManager.location?.coordinate {
-            
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            
-            mapView.setRegion(region, animated: true)
-            
-        }
+        showUserLocation()
     }
     
     
     @IBAction func closeMapVC() {
         dismiss(animated: true)
     }
+    
+    @IBAction func doneButtonPressed() {
+    }
+    
     
     private func setupPlacemark() {
         
@@ -93,6 +93,7 @@ class MapViewController: UIViewController {
             break
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if currentSegueIdentifier == "getAddress" { showUserLocation() }
             break
         case .denied:
             self.showAlert(title: "Your location is not avaliable",
@@ -116,5 +117,27 @@ class MapViewController: UIViewController {
         
         alert.addAction(okAction)
         present(alert,animated: true)
+    }
+    
+    private func showUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            
+            mapView.setRegion(region, animated: true)
+            
+        }
+    }
+    
+    private func setupMapView () {
+        if currentSegueIdentifier == "showPlace" {
+            setupPlacemark()
+            mapPinImage.isHidden = true
+            addressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
     }
 }
