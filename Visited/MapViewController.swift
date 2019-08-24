@@ -5,16 +5,35 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters = 10_000.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         setupPlacemark()
         checkLocationServices()
+        
+        buttonsStackView.addBackground(color: UIColor(red: 1, green: 1, blue: 1, alpha: 0.8),
+                                    cornerRadius: 10)
     }
+    
+    @IBAction func centerViewInUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            
+            mapView.setRegion(region, animated: true)
+            
+        }
+    }
+    
     
     @IBAction func closeMapVC() {
         dismiss(animated: true)
@@ -56,7 +75,10 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // TODO: Show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(title: "Location Services are disabled",
+                               message: "Enable services in Settings - Privacy - Location Services - turn ON")
+            }
         }
     }
     
@@ -73,17 +95,26 @@ class MapViewController: UIViewController {
             mapView.showsUserLocation = true
             break
         case .denied:
-            // TODO: Show alert controller
+            self.showAlert(title: "Your location is not avaliable",
+                      message: "Give permission in Settings - Visited - Location")
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
-            // TODO: Show alert controller
             break
         @unknown default:
             print("New case is avaliable")
             break
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert,animated: true)
     }
 }

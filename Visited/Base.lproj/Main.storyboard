@@ -244,30 +244,47 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="quI-Ii-J5f">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-36-hha">
-                                <rect key="frame" x="359" y="30" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="vyx-sF-HlL"/>
-                                    <constraint firstAttribute="height" constant="40" id="xDy-rA-1bg"/>
-                                </constraints>
-                                <state key="normal" image="cancel"/>
-                                <connections>
-                                    <action selector="closeMapVC" destination="I8O-Yt-h43" eventType="touchUpInside" id="0hp-uk-f9f"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-PE-48s">
+                                <rect key="frame" x="354" y="60" width="50" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-36-hha">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="V5k-XF-fbk"/>
+                                            <constraint firstAttribute="width" constant="50" id="VhF-h9-MX3"/>
+                                        </constraints>
+                                        <state key="normal" image="cancel"/>
+                                        <connections>
+                                            <action selector="closeMapVC" destination="I8O-Yt-h43" eventType="touchUpInside" id="0hp-uk-f9f"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jG9-OR-c4R">
+                                        <rect key="frame" x="0.0" y="60" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="M3u-Yv-3g2"/>
+                                            <constraint firstAttribute="width" constant="50" id="hER-Gv-0Nv"/>
+                                        </constraints>
+                                        <state key="normal" image="location"/>
+                                        <connections>
+                                            <action selector="centerViewInUserLocation" destination="I8O-Yt-h43" eventType="touchUpInside" id="cVi-VV-y6g"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="1bZ-36-hha" secondAttribute="trailing" constant="15" id="1Qv-Od-sJP"/>
+                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="cZP-PE-48s" secondAttribute="trailing" constant="10" id="4lC-2o-AN8"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="trailing" secondItem="7p8-qp-WIh" secondAttribute="trailing" id="Flm-C1-yWj"/>
+                            <constraint firstItem="cZP-PE-48s" firstAttribute="top" secondItem="2Qu-hb-8RS" secondAttribute="top" constant="40" id="Fpb-fp-cob"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="top" secondItem="7p8-qp-WIh" secondAttribute="top" id="GsU-6D-r44"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="leading" secondItem="7p8-qp-WIh" secondAttribute="leading" id="LMD-tm-UY3"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="bottom" secondItem="7p8-qp-WIh" secondAttribute="bottom" id="Ntf-SC-aME"/>
-                            <constraint firstItem="1bZ-36-hha" firstAttribute="top" secondItem="2Qu-hb-8RS" secondAttribute="top" constant="10" id="YSe-aV-8d9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Qu-hb-8RS"/>
                     </view>
                     <connections>
+                        <outlet property="buttonsStackView" destination="cZP-PE-48s" id="mxR-6m-RJU"/>
                         <outlet property="mapView" destination="quI-Ii-J5f" id="N0J-in-Jas"/>
                     </connections>
                 </viewController>
@@ -465,6 +482,7 @@
         <image name="emptyStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="filledStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="gallery" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="location" width="33.333332061767578" height="33.333332061767578"/>
         <image name="map" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
     <inferredMetricsTieBreakers>
