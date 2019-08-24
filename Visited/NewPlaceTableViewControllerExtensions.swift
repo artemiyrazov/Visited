@@ -73,3 +73,12 @@ extension NewPlaceTableViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     
 }
+
+
+// MARK: MapViewController delegate
+
+extension NewPlaceTableViewController: MapViewControllerDelegate {
+    func getAddress(_ address: String?) {
+        placeLocationField.text = address
+    }
+}

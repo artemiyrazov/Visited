@@ -98,16 +98,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-BG-Q8L">
-                                                    <rect key="frame" x="15.999999999999993" y="15" width="115.33333333333331" height="66.666666666666671"/>
+                                                    <rect key="frame" x="16" y="15" width="349" height="66.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-NZ-zsl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="115.33333333333333" height="29.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="349" height="29.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-7k-icf">
-                                                            <rect key="frame" x="0.0" y="37.333333333333336" width="115.33333333333333" height="29.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="37.333333333333336" width="349" height="29.333333333333336"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -135,6 +135,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="PA7-fG-Rym" secondAttribute="trailing" constant="20" id="N88-3m-9oR"/>
                                                 <constraint firstItem="Ufq-BG-Q8L" firstAttribute="top" secondItem="SXu-3l-xZd" secondAttribute="top" constant="15" id="atw-vC-fe1"/>
                                                 <constraint firstItem="Ufq-BG-Q8L" firstAttribute="leading" secondItem="SXu-3l-xZd" secondAttribute="leading" constant="16" id="n2Z-ql-0Qi"/>
+                                                <constraint firstItem="PA7-fG-Rym" firstAttribute="leading" secondItem="Ufq-BG-Q8L" secondAttribute="trailing" constant="4" id="zke-oq-Sqa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
