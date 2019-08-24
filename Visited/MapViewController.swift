@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
         
         buttonsStackView.addBackground(color: UIColor(red: 1, green: 1, blue: 1, alpha: 0.8),
                                     cornerRadius: 10)
+        addressLabel.text = ""
     }
     
     @IBAction func centerViewInUserLocation() {
@@ -119,6 +120,14 @@ class MapViewController: UIViewController {
         present(alert,animated: true)
     }
     
+    internal func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
     private func showUserLocation() {
         
         if let location = locationManager.location?.coordinate {
@@ -140,4 +149,5 @@ class MapViewController: UIViewController {
             doneButton.isHidden = true
         }
     }
+    
 }
