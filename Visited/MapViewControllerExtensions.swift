@@ -32,8 +32,18 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
+        guard isNavigatorActive else { return }
+
         let center = getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
+        
+        if currentSegueIdentifier == "showPlace" && previousUserLocation != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.showUserLocation()
+            }
+        }
+        
+        geocoder.cancelGeocode()
         
         geocoder.reverseGeocodeLocation(center) { (placemarks, error) in
             if let error = error {
@@ -63,6 +73,13 @@ extension MapViewController: MKMapViewDelegate {
             
             
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+        renderer.lineWidth = 4
+        return renderer
     }
 }
 

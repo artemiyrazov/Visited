@@ -4,18 +4,33 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     
+    @IBOutlet weak var userLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var mapPinImage: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var goButton: UIButton! {
+        didSet {
+            goButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+            goButton.layer.cornerRadius = 10
+        }
+    }
     
     var mapViewControllerDelegate: MapViewControllerDelegate?
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
-    let regionInMeters = 5000.0
+    let regionInMeters = 1000.0
     var currentSegueIdentifier = ""
+    var placeCoordinate: CLLocationCoordinate2D?
+    var previousUserLocation: CLLocation? {
+        didSet {
+            startTrackingUserLocation()
+        }
+    }
+    var directionsArray: [MKDirections] = []
+    var isNavigatorActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +53,79 @@ class MapViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    
+    @IBAction func goButtonPressed() {
+        isNavigatorActive.toggle()
+        userLocationButton.isEnabled.toggle()
+        if isNavigatorActive {
+            goButton.setImage(#imageLiteral(resourceName: "stop"), for: .normal)
+            getDirection()
+        } else {
+            goButton.setImage(#imageLiteral(resourceName: "getDirection2"), for: .normal)
+            resetMapView(withNew: nil)
+        }
+    }
+    
     @IBAction func doneButtonPressed() {
+    
         mapViewControllerDelegate?.getAddress(addressLabel.text)
         dismiss(animated: true)
+        
+    }
+    
+    
+    private func getDirection() {
+        
+        guard let location = locationManager.location?.coordinate else {
+                    showAlert(title: "Error", message: "Current location is not found")
+                    return
+        }
+        
+        locationManager.startUpdatingLocation()
+        
+            previousUserLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            
+            guard let request = createDirectionRequest(from: location) else {
+                showAlert(title: "Error", message: "Destination is not found")
+                return
+            }
+            
+            let direction = MKDirections(request: request)
+            resetMapView(withNew: direction)
+            
+            direction.calculate { (response, error) in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                guard let response = response else {
+                    self.showAlert(title: "Error", message: "Direction is not avaliable")
+                    return
+                }
+                
+                for route in response.routes {
+                    self.mapView.addOverlay(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+            
+    }
+    
+    private func createDirectionRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request? {
+        
+        guard let destinationCoordinate = placeCoordinate else { return nil }
+        let startLocation = MKPlacemark(coordinate: coordinate)
+        let finishLocation = MKPlacemark(coordinate: destinationCoordinate)
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: startLocation)
+        request.destination = MKMapItem(placemark: finishLocation)
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        return request
     }
     
     
@@ -67,6 +152,7 @@ class MapViewController: UIViewController {
             guard let placemarkLocation = placemark?.location else { return }
             
             annotation.coordinate = placemarkLocation.coordinate
+            self.placeCoordinate = placemarkLocation.coordinate
             
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true)
@@ -132,7 +218,19 @@ class MapViewController: UIViewController {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    private func showUserLocation() {
+    private func startTrackingUserLocation() {
+        
+        guard let previousUserLocation = previousUserLocation else { return }
+        let center = getCenterLocation(for: mapView)
+        guard center.distance(from: previousUserLocation) > 50 else { return }
+        self.previousUserLocation = center
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.showUserLocation()
+        }
+    }
+    
+    internal func showUserLocation() {
         
         if let location = locationManager.location?.coordinate {
             
@@ -146,11 +244,28 @@ class MapViewController: UIViewController {
     }
     
     private func setupMapView () {
+        
+        goButton.isHidden = true
+        
         if currentSegueIdentifier == "showPlace" {
             setupPlacemark()
             mapPinImage.isHidden = true
             addressLabel.isHidden = true
             doneButton.isHidden = true
+            goButton.isHidden = false
+        }
+    }
+    
+    private func resetMapView(withNew direction: MKDirections?) {
+        
+        mapView.removeOverlays(mapView.overlays)
+        
+        if let direction = direction {
+            directionsArray.append(direction)
+            let _ = directionsArray.map { $0.cancel()
+            directionsArray.removeAll()
+                
+            }
         }
     }
     

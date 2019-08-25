@@ -311,6 +311,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWZ-fO-a1f">
+                                <rect key="frame" x="182" y="617" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="WGP-eH-7JV"/>
+                                    <constraint firstAttribute="height" constant="50" id="yus-YF-Z7I"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" image="getDirection2"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="I8O-Yt-h43" eventType="touchUpInside" id="LSa-6s-cKg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -325,6 +337,8 @@
                             <constraint firstItem="tFC-Hq-10P" firstAttribute="centerX" secondItem="quI-Ii-J5f" secondAttribute="centerX" id="Spt-Zk-oRQ"/>
                             <constraint firstItem="ZIi-43-h89" firstAttribute="leading" secondItem="2Qu-hb-8RS" secondAttribute="leading" constant="20" id="a2A-kU-G2v"/>
                             <constraint firstItem="tFC-Hq-10P" firstAttribute="centerY" secondItem="quI-Ii-J5f" secondAttribute="centerY" constant="-20" id="aOH-hj-yKn"/>
+                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="bottom" secondItem="bWZ-fO-a1f" secondAttribute="bottom" constant="69" id="dfZ-sl-PMw"/>
+                            <constraint firstItem="bWZ-fO-a1f" firstAttribute="centerX" secondItem="quI-Ii-J5f" secondAttribute="centerX" id="gjI-XR-Gzp"/>
                             <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="ZIi-43-h89" secondAttribute="trailing" constant="20" id="o2M-E5-VZW"/>
                             <constraint firstItem="2Qu-hb-8RS" firstAttribute="bottom" secondItem="J2J-re-mfS" secondAttribute="bottom" constant="70" id="uYn-Jf-wa7"/>
                         </constraints>
@@ -334,8 +348,10 @@
                         <outlet property="addressLabel" destination="ZIi-43-h89" id="lK2-50-pEj"/>
                         <outlet property="buttonsStackView" destination="cZP-PE-48s" id="mxR-6m-RJU"/>
                         <outlet property="doneButton" destination="J2J-re-mfS" id="Vr2-OY-oSK"/>
+                        <outlet property="goButton" destination="bWZ-fO-a1f" id="Im6-pG-BAM"/>
                         <outlet property="mapPinImage" destination="tFC-Hq-10P" id="zoD-br-JVw"/>
                         <outlet property="mapView" destination="quI-Ii-J5f" id="N0J-in-Jas"/>
+                        <outlet property="userLocationButton" destination="jG9-OR-c4R" id="TK1-6D-Jbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waE-cN-Xr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -369,22 +385,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="z7L-fB-RTS">
-                                                    <rect key="frame" x="96" y="8" width="116" height="68.666666666666671"/>
+                                                    <rect key="frame" x="96" y="8" width="210" height="68.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0he-8P-VZX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="24.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="210" height="24.666666666666668"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlE-lQ-jZa">
-                                                            <rect key="frame" x="0.0" y="26.666666666666664" width="116" height="21"/>
+                                                            <rect key="frame" x="0.0" y="26.666666666666664" width="210" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-ay-u3b">
-                                                            <rect key="frame" x="0.0" y="49.666666666666664" width="116" height="18.999999999999993"/>
+                                                            <rect key="frame" x="0.0" y="49.666666666666664" width="210" height="18.999999999999993"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -392,7 +408,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="90" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="aGw-N4-Rmq" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="220" y="34.333333333333336" width="90" height="16"/>
+                                                    <rect key="frame" x="314" y="34.333333333333336" width="90" height="16"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="tWz-FW-WbC"/>
@@ -532,6 +548,7 @@
         <image name="emptyStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="filledStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="gallery" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="getDirection2" width="33.333332061767578" height="33.333332061767578"/>
         <image name="locationMarker" width="33.333332061767578" height="33.333332061767578"/>
         <image name="map" width="33.333332061767578" height="33.333332061767578"/>
         <image name="navigationArrow" width="33.333332061767578" height="33.333332061767578"/>
