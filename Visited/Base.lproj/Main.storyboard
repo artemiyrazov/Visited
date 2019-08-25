@@ -318,7 +318,7 @@
                                     <constraint firstAttribute="height" constant="50" id="yus-YF-Z7I"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
-                                <state key="normal" image="getDirection2"/>
+                                <state key="normal" image="getDirection"/>
                                 <connections>
                                     <action selector="goButtonPressed" destination="I8O-Yt-h43" eventType="touchUpInside" id="LSa-6s-cKg"/>
                                 </connections>
@@ -548,7 +548,7 @@
         <image name="emptyStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="filledStar" width="33.333332061767578" height="33.333332061767578"/>
         <image name="gallery" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="getDirection2" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="getDirection" width="33.333332061767578" height="33.333332061767578"/>
         <image name="locationMarker" width="33.333332061767578" height="33.333332061767578"/>
         <image name="map" width="33.333332061767578" height="33.333332061767578"/>
         <image name="navigationArrow" width="33.333332061767578" height="33.333332061767578"/>

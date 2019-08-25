@@ -61,7 +61,7 @@ class MapViewController: UIViewController {
             goButton.setImage(#imageLiteral(resourceName: "stop"), for: .normal)
             getDirection()
         } else {
-            goButton.setImage(#imageLiteral(resourceName: "getDirection2"), for: .normal)
+            goButton.setImage(#imageLiteral(resourceName: "getDirection"), for: .normal)
             resetMapView(withNew: nil)
         }
     }

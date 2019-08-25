@@ -32,12 +32,10 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
-        guard isNavigatorActive else { return }
-
         let center = getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
         
-        if currentSegueIdentifier == "showPlace" && previousUserLocation != nil {
+        if currentSegueIdentifier == "showPlace" && previousUserLocation != nil && isNavigatorActive {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.showUserLocation()
             }
