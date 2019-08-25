@@ -4,18 +4,15 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     
+    
+    @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var userLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var mapPinImage: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var goButton: UIButton! {
-        didSet {
-            goButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
-            goButton.layer.cornerRadius = 10
-        }
-    }
+
     
     var mapViewControllerDelegate: MapViewControllerDelegate?
     var place = Place()

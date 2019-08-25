@@ -258,7 +258,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cZP-PE-48s">
-                                <rect key="frame" x="354" y="60" width="50" height="110"/>
+                                <rect key="frame" x="354" y="293" width="50" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bZ-36-hha">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -280,6 +280,18 @@
                                         <state key="normal" image="navigationArrow"/>
                                         <connections>
                                             <action selector="centerViewInUserLocation" destination="I8O-Yt-h43" eventType="touchUpInside" id="cVi-VV-y6g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUW-Jc-uMe">
+                                        <rect key="frame" x="0.0" y="120" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Wgc-8i-sTv"/>
+                                            <constraint firstAttribute="height" constant="50" id="t4H-O1-KQC"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="1" height="0.0"/>
+                                        <state key="normal" image="getDirection"/>
+                                        <connections>
+                                            <action selector="goButtonPressed" destination="I8O-Yt-h43" eventType="touchUpInside" id="AcS-Fy-oQd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -311,24 +323,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWZ-fO-a1f">
-                                <rect key="frame" x="182" y="617" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="WGP-eH-7JV"/>
-                                    <constraint firstAttribute="height" constant="50" id="yus-YF-Z7I"/>
-                                </constraints>
-                                <size key="titleShadowOffset" width="1" height="0.0"/>
-                                <state key="normal" image="getDirection"/>
-                                <connections>
-                                    <action selector="goButtonPressed" destination="I8O-Yt-h43" eventType="touchUpInside" id="LSa-6s-cKg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="cZP-PE-48s" secondAttribute="trailing" constant="10" id="4lC-2o-AN8"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="trailing" secondItem="7p8-qp-WIh" secondAttribute="trailing" id="Flm-C1-yWj"/>
-                            <constraint firstItem="cZP-PE-48s" firstAttribute="top" secondItem="2Qu-hb-8RS" secondAttribute="top" constant="40" id="Fpb-fp-cob"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="top" secondItem="7p8-qp-WIh" secondAttribute="top" id="GsU-6D-r44"/>
                             <constraint firstItem="J2J-re-mfS" firstAttribute="centerX" secondItem="2Qu-hb-8RS" secondAttribute="centerX" id="H81-wJ-YDn"/>
                             <constraint firstItem="quI-Ii-J5f" firstAttribute="leading" secondItem="7p8-qp-WIh" secondAttribute="leading" id="LMD-tm-UY3"/>
@@ -337,8 +336,7 @@
                             <constraint firstItem="tFC-Hq-10P" firstAttribute="centerX" secondItem="quI-Ii-J5f" secondAttribute="centerX" id="Spt-Zk-oRQ"/>
                             <constraint firstItem="ZIi-43-h89" firstAttribute="leading" secondItem="2Qu-hb-8RS" secondAttribute="leading" constant="20" id="a2A-kU-G2v"/>
                             <constraint firstItem="tFC-Hq-10P" firstAttribute="centerY" secondItem="quI-Ii-J5f" secondAttribute="centerY" constant="-20" id="aOH-hj-yKn"/>
-                            <constraint firstItem="2Qu-hb-8RS" firstAttribute="bottom" secondItem="bWZ-fO-a1f" secondAttribute="bottom" constant="69" id="dfZ-sl-PMw"/>
-                            <constraint firstItem="bWZ-fO-a1f" firstAttribute="centerX" secondItem="quI-Ii-J5f" secondAttribute="centerX" id="gjI-XR-Gzp"/>
+                            <constraint firstItem="cZP-PE-48s" firstAttribute="centerY" secondItem="2Qu-hb-8RS" secondAttribute="centerY" id="dng-BH-gkQ"/>
                             <constraint firstItem="2Qu-hb-8RS" firstAttribute="trailing" secondItem="ZIi-43-h89" secondAttribute="trailing" constant="20" id="o2M-E5-VZW"/>
                             <constraint firstItem="2Qu-hb-8RS" firstAttribute="bottom" secondItem="J2J-re-mfS" secondAttribute="bottom" constant="70" id="uYn-Jf-wa7"/>
                         </constraints>
@@ -348,7 +346,7 @@
                         <outlet property="addressLabel" destination="ZIi-43-h89" id="lK2-50-pEj"/>
                         <outlet property="buttonsStackView" destination="cZP-PE-48s" id="mxR-6m-RJU"/>
                         <outlet property="doneButton" destination="J2J-re-mfS" id="Vr2-OY-oSK"/>
-                        <outlet property="goButton" destination="bWZ-fO-a1f" id="Im6-pG-BAM"/>
+                        <outlet property="goButton" destination="QUW-Jc-uMe" id="mvl-3J-KX2"/>
                         <outlet property="mapPinImage" destination="tFC-Hq-10P" id="zoD-br-JVw"/>
                         <outlet property="mapView" destination="quI-Ii-J5f" id="N0J-in-Jas"/>
                         <outlet property="userLocationButton" destination="jG9-OR-c4R" id="TK1-6D-Jbd"/>
