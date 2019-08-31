@@ -15,7 +15,8 @@ extension MapViewController: MKMapViewDelegate {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationIdentifier") as? MKPinAnnotationView
         
         if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
+            annotationView = MKPinAnnotationView(annotation: annotation,
+                                                 reuseIdentifier: "annotationIdentifier")
             annotationView?.canShowCallout = true
         }
         
@@ -32,12 +33,12 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
-        let center = getCenterLocation(for: mapView)
+        let center = mapManager.getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
         
         if currentSegueIdentifier == "showPlace" && previousUserLocation != nil && isNavigatorActive {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.showUserLocation()
+                self.mapManager.showUserLocation(mapView: self.mapView)
             }
         }
         
@@ -84,6 +85,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
+        mapManager.checkLocationAuthorization(mapView: mapView,
+                                              segueIdentifier: currentSegueIdentifier)
     }
 }

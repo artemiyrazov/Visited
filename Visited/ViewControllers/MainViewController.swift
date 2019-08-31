@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl! 
     @IBOutlet weak var sortingButton: UIBarButtonItem!
     
     override func viewDidLoad() {

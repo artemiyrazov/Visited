@@ -17,6 +17,7 @@
 		BA7B05A123084F6900D6F244 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7B05A023084F6900D6F244 /* PlaceModel.swift */; };
 		BA7B05A32308AEE700D6F244 /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7B05A22308AEE700D6F244 /* NewPlaceTableViewController.swift */; };
 		BA8146D42309734900DB2CA5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8146D32309734900DB2CA5 /* StorageManager.swift */; };
+		BA993D99231AAB84009288BA /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA993D98231AAB84009288BA /* MapManager.swift */; };
 		BAA19915231126A60002CA37 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA19914231126A60002CA37 /* UIStackViewExtensions.swift */; };
 		BAA42777230F03A900ABC763 /* MapViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA42776230F03A900ABC763 /* MapViewControllerExtensions.swift */; };
 		BAB158CD230DDB7900D26AC6 /* MainViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB158CC230DDB7900D26AC6 /* MainViewControllerExtensions.swift */; };
@@ -38,6 +39,7 @@
 		BA7B05A023084F6900D6F244 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		BA7B05A22308AEE700D6F244 /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = "<group>"; };
 		BA8146D32309734900DB2CA5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BA993D98231AAB84009288BA /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		BAA19914231126A60002CA37 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		BAA42776230F03A900ABC763 /* MapViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BAB158CC230DDB7900D26AC6 /* MainViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -87,23 +89,72 @@
 		BA7B0589230576D400D6F244 /* Visited */ = {
 			isa = PBXGroup;
 			children = (
-				BA7B058A230576D400D6F244 /* AppDelegate.swift */,
-				BAA19914231126A60002CA37 /* UIStackViewExtensions.swift */,
+				BA993D9A231AB8A2009288BA /* ViewControllers */,
+				BA993D9C231AB8D1009288BA /* Managers */,
+				BA993D9B231AB8C4009288BA /* Models */,
+				BA993D9F231AB93E009288BA /* Extensions */,
+				BA993D9D231AB916009288BA /* Support Files */,
+				BA993D9E231AB92F009288BA /* Interface Builder */,
+			);
+			path = Visited;
+			sourceTree = "<group>";
+		};
+		BA993D9A231AB8A2009288BA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				BA7B059C230577FA00D6F244 /* MainViewController.swift */,
-				BAB158CC230DDB7900D26AC6 /* MainViewControllerExtensions.swift */,
 				BA7B05A22308AEE700D6F244 /* NewPlaceTableViewController.swift */,
-				BAB158CE230DDB9000D26AC6 /* NewPlaceTableViewControllerExtensions.swift */,
 				BAF6990D230ED6A600504656 /* MapViewController.swift */,
-				BAA42776230F03A900ABC763 /* MapViewControllerExtensions.swift */,
-				BA7B05A023084F6900D6F244 /* PlaceModel.swift */,
-				BA8146D32309734900DB2CA5 /* StorageManager.swift */,
 				BA7B059E2308479C00D6F244 /* CustomTableViewCell.swift */,
-				BA7B058E230576D400D6F244 /* Main.storyboard */,
-				BA7B0593230576D500D6F244 /* LaunchScreen.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BA993D9B231AB8C4009288BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BA7B05A023084F6900D6F244 /* PlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA993D9C231AB8D1009288BA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BA8146D32309734900DB2CA5 /* StorageManager.swift */,
+				BA993D98231AAB84009288BA /* MapManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BA993D9D231AB916009288BA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA7B058A230576D400D6F244 /* AppDelegate.swift */,
 				BA50964623129C900044A650 /* Assets.xcassets */,
 				BA7B0596230576D500D6F244 /* Info.plist */,
 			);
-			path = Visited;
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		BA993D9E231AB92F009288BA /* Interface Builder */ = {
+			isa = PBXGroup;
+			children = (
+				BA7B058E230576D400D6F244 /* Main.storyboard */,
+				BA7B0593230576D500D6F244 /* LaunchScreen.storyboard */,
+			);
+			path = "Interface Builder";
+			sourceTree = "<group>";
+		};
+		BA993D9F231AB93E009288BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BAA42776230F03A900ABC763 /* MapViewControllerExtensions.swift */,
+				BAA19914231126A60002CA37 /* UIStackViewExtensions.swift */,
+				BAB158CC230DDB7900D26AC6 /* MainViewControllerExtensions.swift */,
+				BAB158CE230DDB9000D26AC6 /* NewPlaceTableViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BBADE691238116C5FC24C49A /* Pods */ = {
@@ -234,6 +285,7 @@
 				BA7B05A123084F6900D6F244 /* PlaceModel.swift in Sources */,
 				BA7B059D230577FA00D6F244 /* MainViewController.swift in Sources */,
 				BA8146D42309734900DB2CA5 /* StorageManager.swift in Sources */,
+				BA993D99231AAB84009288BA /* MapManager.swift in Sources */,
 				BAF6990E230ED6A600504656 /* MapViewController.swift in Sources */,
 				BAB158CF230DDB9000D26AC6 /* NewPlaceTableViewControllerExtensions.swift in Sources */,
 				BA7B058B230576D400D6F244 /* AppDelegate.swift in Sources */,
@@ -389,7 +441,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7D9HCV7P57;
-				INFOPLIST_FILE = Visited/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Visited/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7D9HCV7P57;
-				INFOPLIST_FILE = Visited/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Visited/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
