@@ -36,7 +36,6 @@ class NewPlaceTableViewController: UITableViewController {
         
         placeTypePicker.delegate = self
         placeTypePicker.dataSource = self
-        placeTypePicker.selectRow(PlaceType.allCases.count / 2, inComponent: 0, animated: true)
         
         setupEditScreen()
         
@@ -44,7 +43,6 @@ class NewPlaceTableViewController: UITableViewController {
             self.currentRating = rating
         }
     }
-    
     
     // MARK: Table view delegate
     
@@ -84,17 +82,32 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapViewController
+            else { return }
+        
+        mapVC.currentSegueIdentifier = identifier
+        mapVC.mapViewControllerDelegate = self 
+        
+        if identifier == "showPlace" {
+            mapVC.place.name = placeNameField.text!
+            mapVC.place.location = placeLocationField.text!
+            mapVC.place.type = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
+            mapVC.place.imageData = placeImage.image?.pngData()
+        }
+        
+    }
     
     
     func savePlace() {
         
-        var image: UIImage?
+        let image = isImageChanged ? placeImage.image : #imageLiteral(resourceName: "Default place image")
         
-        if isImageChanged {
-            image = placeImage.image
-        } else {
-            image = #imageLiteral(resourceName: "Default place image")
-        }
+        selectedPlaceType = PlaceType.allCases[placeTypePicker.selectedRow(inComponent: 0)]
         
         let newPlace = Place(name: placeNameField.text!,
                              location: placeLocationField.text!,
@@ -124,7 +137,7 @@ class NewPlaceTableViewController: UITableViewController {
         isImageChanged = true
         
         placeImage.image = image
-        placeImage.contentMode = .scaleAspectFit
+        placeImage.contentMode = .scaleAspectFill
         
         placeNameField.text = currentPlace?.name
         placeLocationField.text = currentPlace?.location
