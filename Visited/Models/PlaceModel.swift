@@ -25,6 +25,7 @@ class Place: Object {
     @objc dynamic var name = ""
     @objc dynamic var location: String?
     @objc dynamic var imageData: Data?
+    @objc dynamic var compressedImageData: Data?
     @objc dynamic var date = Date()
     @objc dynamic var rating = 0.0
     
@@ -46,6 +47,7 @@ class Place: Object {
                       location: String?,
                       type: PlaceType,
                       imageData: Data?,
+                      compressedImageData: Data?,
                       rating: Double) {
         
         self.init()
@@ -53,6 +55,7 @@ class Place: Object {
         self.location = location
         self.type = type
         self.imageData = imageData
+        self.compressedImageData = compressedImageData
         self.rating = rating
     }
     

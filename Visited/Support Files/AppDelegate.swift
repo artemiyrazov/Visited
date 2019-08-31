@@ -14,8 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // version 0 - basic version
         // version 1 - add 'date' into model
         // version 2 - add 'rating' into model
+        // version 3 - add compressed image
         
-        let schemaVersion: UInt64 = 2
+        let schemaVersion: UInt64 = 3
         
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used

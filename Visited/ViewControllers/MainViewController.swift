@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl! 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sortingButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.placeNameLabel.text = place.name
         cell.placeLocationLabel.text = place.location
         cell.placeTypeLabel.text = place.type.rawValue
-        cell.placeImage.image = UIImage(data: place.imageData!)
+        cell.placeImage.image = UIImage(data: place.compressedImageData!)
         cell.placeRatingView.rating = place.rating
         
         
